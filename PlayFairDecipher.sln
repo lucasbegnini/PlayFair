@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayFairDecipher", "PlayFairDecipher\PlayFairDecipher.csproj", "{BD16B6D7-2310-417E-935C-7561F2A7B6C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD16B6D7-2310-417E-935C-7561F2A7B6C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD16B6D7-2310-417E-935C-7561F2A7B6C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD16B6D7-2310-417E-935C-7561F2A7B6C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD16B6D7-2310-417E-935C-7561F2A7B6C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC7507A1-3502-4FC5-927E-8DEF26B7FEC8}
+	EndGlobalSection
+EndGlobal
