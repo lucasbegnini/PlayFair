@@ -15,16 +15,17 @@ namespace PlayFairDecipher.src
 
         public void CreateDic()
         {
-            var reader = new StreamReader(@"E:\Projetos ASP NET\PlayFairDecipher\PlayFair\PlayFairDecipher\Dicionary\dicionario.csv");
-
+            var reader = new StreamReader(@"E:\Projetos ASP NET\PlayFairDecipher\PlayFair\PlayFairDecipher\Dicionary\pt.txt");
+            
             while (!reader.EndOfStream)
             {
                 var line = reader.ReadLine();
-                string word = line.Split('\t').First();
-                if (word.Length >= 3 && word.Length < 6)
-                {
-                    m_dic.Add(word);
+                string word = line.Trim();
+                if (word.Length > 3) {
+                    if (word.Length < 8)
+                        m_dic.Add(word);
                 }
+
             }
         }
 
