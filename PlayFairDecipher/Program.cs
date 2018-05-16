@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -18,14 +19,17 @@ namespace PlayFairDecipher
 
             PlayFair _playFair = new PlayFair();
             Dictionary _dictionary = new Dictionary();
+            Stopwatch sw = new Stopwatch();
+            List<TestFiles> results = new List<TestFiles>();
+            var csv = new StringBuilder();
 
             _dictionary.CreateDic();
 
             Console.WriteLine("Dictionary with " + _dictionary.Dic.Count);
 
             string cypherText = "UhtohkmrmitrrbtupclZ";
-            List<TestFiles> results = new List<TestFiles>();
-            var csv = new StringBuilder();
+
+            sw.Start();
             Parallel.ForEach(
             _dictionary.Dic,
             (currentWord) =>
@@ -49,6 +53,8 @@ namespace PlayFairDecipher
             }
             );
 
+            sw.Stop();
+
             File.WriteAllText(filePath, csv.ToString());
 
             if (results.Count == 0)
@@ -64,7 +70,7 @@ namespace PlayFairDecipher
                         _bestFileGuess = results[i];
                     }
                 }
-
+                Console.WriteLine("Executou a busca em ={0}", sw.Elapsed);
                 Console.WriteLine("a palavra que teve melhor desempenho foi :" + _bestFileGuess.Word);
                 Console.WriteLine("Texto resultante : " + _playFair.Decipher(cypherText, _bestFileGuess.Word));
             }
