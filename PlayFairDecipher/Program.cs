@@ -10,8 +10,11 @@ namespace PlayFairDecipher
 {
     class Program
     {
+        private const string V = @"E:\Projetos ASP NET\PlayFairDecipher\PlayFair\PlayFairDecipher\out.csv";
+
         static void Main(string[] args)
         {
+            string filePath = V;
 
             PlayFair _playFair = new PlayFair();
             Dictionary _dictionary = new Dictionary();
@@ -22,7 +25,7 @@ namespace PlayFairDecipher
 
             string cypherText = "UhtohkmrmitrrbtupclZ";
             List<TestFiles> results = new List<TestFiles>();
-            
+            var csv = new StringBuilder();
             Parallel.ForEach(
             _dictionary.Dic,
             (currentWord) =>
@@ -36,11 +39,17 @@ namespace PlayFairDecipher
                         numberOfWords++;
                     }
                 }
-                TestFiles _test = new TestFiles(numberOfWords, currentWord);
-                results.Add(_test);
+                if (numberOfWords > 0) {
+                    TestFiles _test = new TestFiles(numberOfWords, currentWord);
+                    var newLine = string.Format("{0} ,{1} ", currentWord, numberOfWords);
+                    csv.AppendLine(newLine);
+                    results.Add(_test);
 
+                }
             }
             );
+
+            File.WriteAllText(filePath, csv.ToString());
 
             if (results.Count == 0)
             {
@@ -57,6 +66,7 @@ namespace PlayFairDecipher
                 }
 
                 Console.WriteLine("a palavra que teve melhor desempenho foi :" + _bestFileGuess.Word);
+                Console.WriteLine("Texto resultante : " + _playFair.Decipher(cypherText, _bestFileGuess.Word));
             }
 
             Console.ReadKey(true);
